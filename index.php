@@ -1,20 +1,27 @@
-<?php    
-   if (isset($_POST["login"]))
-   {
-    header("Location: http://localhost/demo/todo_List.php");
-   }
-?><!DOCTYPE html>
+<?php
+session_start();
+if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['username']))
+{
+    $_SESSION['username'] = $_POST['username'];
+}
+if(isset($_SESSION['username']))
+{
+    header("Location: todo.php");
+    exit();
+}
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>To-do list</title>
 </head>
 <body>
-    <form action="todo_list.php" method="post">
-    <label>Username:</label>
-    <input type="text" name="username"><br>
-    <button name="login">Login</button>
+    <form action="index.php" method="post">
+        <label for="user">Username:</label>
+        <input type="text" name="username" id="user" required><br>
+        <input type="submit" name="login" value="Login">
     </form>
 </body>
 </html>
