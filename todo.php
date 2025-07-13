@@ -41,10 +41,7 @@ if(isset($_GET['delete']))
 </head>
 
 <body>
-    <?php if(isset($_COOKIE['username']))
-    {
-        echo "Hello " . $_COOKIE["username"];
-    }?>
+    <?php echo "Hello {$username} " ;?>
     <h2>To-do List</h2>
     <form method="post" action="todo.php">
         <label for="task">Add a task:</label><br>
