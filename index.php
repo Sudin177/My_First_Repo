@@ -1,15 +1,3 @@
-<?php
-session_start();
-if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['username']))
-{
-    $_SESSION['username'] = $_POST['username'];
-}
-if(isset($_SESSION['username']))
-{
-    header("Location: todo.php");
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,3 +13,22 @@ if(isset($_SESSION['username']))
     </form>
 </body>
 </html>
+<?php
+session_start();
+if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['username']))
+{
+    $user=trim($_POST['username']);
+    if ($user !=='')
+    {
+        $_SESSION['username'] = $_POST['username'];
+    }
+    else{
+        echo "Invalid input :Can't be empty";
+    }
+}
+if(isset($_SESSION['username']))
+{
+    header("Location: todo.php");
+    exit();
+}
+?>
